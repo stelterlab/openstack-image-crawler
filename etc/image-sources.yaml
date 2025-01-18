@@ -21,6 +21,16 @@ sources:
         checksumname: SHA256SUMS
         algorithm: sha256
         limit: 5
+      - name: '24.04'
+        codename: noble
+        baseURL: https://cloud-images.ubuntu.com/releases/noble/
+        releasepath: release
+        imagename: ubuntu-24.04-server-cloudimg-amd64
+        extension: img
+        checksumname: SHA256SUMS
+        algorithm: sha256
+        limit: 5
+
 
   - name: Ubuntu Minimal
     vendor: "Canonical Ltd."
@@ -41,18 +51,18 @@ sources:
         extension: img
         checksumname: SHA256SUMS
         algorithm: sha256
+      - name: '24.04'
+        codename: noble
+        baseURL: https://cloud-images.ubuntu.com/minimal/releases/noble/
+        releasepath: release
+        imagename: ubuntu-24.04-minimal-cloudimg-amd64
+        extension: img
+        checksumname: SHA256SUMS
+        algorithm: sha256
 
   - name: Debian
     vendor: "Debian Community"
     releases:
-      - name: '10'
-        codename: buster
-        baseURL: https://cloud.debian.org/images/cloud/buster/
-        releasepath: latest
-        imagename: debian-10-genericcloud-amd64
-        extension: qcow2
-        checksumname: SHA512SUMS
-        algorithm: sha512
       - name: '11'
         codename: bullseye
         baseURL: https://cloud.debian.org/images/cloud/bullseye/
@@ -112,7 +122,7 @@ sources:
         baseURL: https://ftp.plusline.net/fedora/linux/
         releasepath: releases
         imagepath: Cloud/x86_64/images
-        imagename: Fedora-Cloud-Base-(\d+)-(\d+\.\d+).x86_64
+        imagename: Fedora-Cloud-Base-Generic
         extension: qcow2
         checksumname: CHECKSUM
         algorithm: sha256

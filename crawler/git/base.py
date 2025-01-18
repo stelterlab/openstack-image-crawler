@@ -77,7 +77,7 @@ def update_repository(database, repository, updated_sources, ssh_command):
                         release_data["name"] + " " + release_data["version"]
                     )
                 else:
-                    logger.warn("got no release version data")
+                    logger.warning("got no release version data")
 
         commit_message = "Added the following releases: " + ", ".join(releases_list)
         logger.info("Commit message:")

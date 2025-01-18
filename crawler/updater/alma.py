@@ -6,7 +6,7 @@ import requests
 import re
 
 from crawler.web.generic import url_get_last_modified
-from crawler.web.directory import web_get_checksum, web_get_current_image_metadata
+from crawler.web.directory import web_get_checksum
 
 from bs4 import BeautifulSoup
 from loguru import logger
@@ -17,9 +17,6 @@ def build_image_url(release, imagefile_name):
         base_url = release["baseURL"] + "/"
     else:
         base_url = release["baseURL"]
-
-    # if not versionpath.endswith("/"):
-    #    versionpath = versionpath + "/"
 
     return (
         base_url + release["releasepath"] + "/" + imagefile_name

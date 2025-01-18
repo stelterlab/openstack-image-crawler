@@ -49,17 +49,21 @@ def get_image_filename(release, images_url):
 
     last_link = ""
 
+    logger.debug("Lookup for " + release["imagename"])
+
     for link in soup.find_all("a"):
         data = link.get("href")
 
-        if release["extension"] in data:
-            # logger.debug("match: " + data)
+        logger.debug("checking link: " + data)
+
+        if release["imagename"] in data:
+            logger.debug("match: " + data)
             last_link = data
 
-    if len(last_link) > 0:
-        return last_link
-    else:
-        return None
+            if len(last_link) > 0:
+                return last_link
+
+    return None
 
 def get_checksum(release, images_url, image_filename):
     request = requests.get(images_url, allow_redirects=True)
@@ -112,7 +116,7 @@ def fedora_update_check(release, last_checksum):
     image_filename = get_image_filename(release, images_url)
 
     if image_filename is None:
-        logger.warn("did not find any matching filenames")
+        logger.warning("did not find any matching filenames")
         return None
 
     logger.debug("image_filename: " +  image_filename)
@@ -204,7 +208,7 @@ def fedora_crawl_release(release):
         image_filename = get_image_filename(release, images_url)
 
         if image_filename is None:
-            logger.warn("did not find any matching filenames")
+            logger.warning("did not find any matching filenames")
             return None
 
         logger.debug("image_filename: " +  image_filename)
